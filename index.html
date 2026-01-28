@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>browny.gift - Katalog Buket Bunga</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #FF6B9D;
+            --soft-pink: #FFB3C6;
+            --light-pink: #FFE5EC;
+            --pale-pink: #FFF0F5;
+            --dark-pink: #C44569;
+            --text-dark: #2C2C2C;
+            --text-light: #666666;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--pale-pink) 0%, var(--white) 50%, var(--light-pink) 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(255, 107, 157, 0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        .owner-info {
+            text-align: right;
+        }
+
+        .owner-name {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 5% 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 5% 5rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(255, 107, 157, 0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.15s; }
+        .product-card:nth-child(3) { animation-delay: 0.2s; }
+        .product-card:nth-child(4) { animation-delay: 0.25s; }
+        .product-card:nth-child(5) { animation-delay: 0.3s; }
+        .product-card:nth-child(6) { animation-delay: 0.35s; }
+        .product-card:nth-child(7) { animation-delay: 0.4s; }
+        .product-card:nth-child(8) { animation-delay: 0.45s; }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.25);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--soft-pink), var(--light-pink));
+            color: var(--dark-pink);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .decorative-circle {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-pink), var(--soft-pink));
+            opacity: 0.1;
+            top: -30px;
+            right: -30px;
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .decorative-circle {
+            transform: scale(1.5);
+            opacity: 0.2;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 5%;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .instagram-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid var(--white);
+            transition: opacity 0.3s ease;
+        }
+
+        .instagram-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .owner-info {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Floating Elements */
+        .floating-shape {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-pink);
+            top: 10%;
+            left: -150px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--soft-pink);
+            bottom: 20%;
+            right: -100px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-30px) translateX(20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">browny.gift</div>
+            <div class="owner-info">
+                <p class="owner-name">by Nia Putri Ramadani</p>
+                <a href="https://www.instagram.com/brownyy.gift/" target="_blank" class="cta-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    Ketahui Selengkapnya
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Katalog Buket Bunga</h1>
+        <p>Koleksi buket bunga pilihan dengan berbagai warna dan tema untuk setiap momen spesial Anda</p>
+    </section>
+
+    <section class="gallery">
+        <div class="gallery-grid">
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 191748.png" alt="Blue Ocean" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Blue Ocean</h3>
+                    <span class="product-tag">Elegant Collection</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 191825.png" alt="Black Elegance" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Black Elegance</h3>
+                    <span class="product-tag">Premium Series</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 191840.png" alt="Pink Blossom Delight" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Pink Blossom Delight</h3>
+                    <span class="product-tag">Romantic Touch</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 191855.png" alt="Soft Pastel Garden" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Soft Pastel Garden</h3>
+                    <span class="product-tag">Spring Vibes</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192006.png" alt="Midnight Charm" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Midnight Charm</h3>
+                    <span class="product-tag">Dark Beauty</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192019.png" alt="White Serenity" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">White Serenity</h3>
+                    <span class="product-tag">Pure Love</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192031.png" alt="Ivory Grace" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Ivory Grace</h3>
+                    <span class="product-tag">Classic Style</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192042.png" alt="Peach Harmony" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Peach Harmony</h3>
+                    <span class="product-tag">Soft Elegance</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192057.png" alt="Creamy Bloom" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Creamy Bloom</h3>
+                    <span class="product-tag">Gentle Touch</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192112.png" alt="Lilac Sweetness" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Lilac Sweetness</h3>
+                    <span class="product-tag">Sweet Dreams</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192122.png" alt="Sky Blue Dream" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Sky Blue Dream</h3>
+                    <span class="product-tag">Fresh Collection</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192137.png" alt="Ocean Breeze" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Ocean Breeze</h3>
+                    <span class="product-tag">Cool Vibes</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192148.png" alt="Red Passion" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Red Passion</h3>
+                    <span class="product-tag">Love Expression</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192200.png" alt="Purple Romance" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Purple Romance</h3>
+                    <span class="product-tag">Royal Touch</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192210.png" alt="Golden Night" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Golden Night</h3>
+                    <span class="product-tag">Luxe Edition</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192220.png" alt="Rose Blush" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Rose Blush</h3>
+                    <span class="product-tag">Pretty Pink</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192231.png" alt="Dark Royal Bloom" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Dark Royal Bloom</h3>
+                    <span class="product-tag">Majestic Style</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192244.png" alt="Colorful Joy" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Colorful Joy</h3>
+                    <span class="product-tag">Happy Vibes</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192256.png" alt="Blue Candy Pop" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Blue Candy Pop</h3>
+                    <span class="product-tag">Fun Collection</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192308.png" alt="Sunny Smile" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Sunny Smile</h3>
+                    <span class="product-tag">Bright Day</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192321.png" alt="Sweet Garden" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Sweet Garden</h3>
+                    <span class="product-tag">Garden Fresh</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192410.png" alt="Turquoise Love" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Turquoise Love</h3>
+                    <span class="product-tag">Ocean Love</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192419.png" alt="Pastel Dream" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Pastel Dream</h3>
+                    <span class="product-tag">Dreamy Touch</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Screenshot 2026-01-28 192456.png" alt="Memory Collage" class="product-image">
+                <div class="product-info">
+                    <div class="decorative-circle"></div>
+                    <h3 class="product-name">Memory Collage</h3>
+                    <span class="product-tag">Special Moments</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>browny.gift - Premium Flower Bouquet</p>
+        <p>Owner: Nia Putri Ramadani</p>
+        <p>
+            Follow us: 
+            <a href="https://www.instagram.com/brownyy.gift/" target="_blank" class="instagram-link">@brownyy.gift</a>
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">2026 All Rights Reserved</p>
+    </footer>
+</body>
+</html>
